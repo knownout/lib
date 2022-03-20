@@ -1,0 +1,15 @@
+[
+    [ "classNames", "...entries: any[]", "Create class names from any type of objects" ],
+    [
+        "mergeObjects", "objects: TObject[], mergeKey: [ string, any ], minMergeLimit: number",
+        "Combine objects that go sequentially into groups"
+    ],
+    [
+        "mergeStringArray", "array: string[], minMergeLimit: number",
+        "Combine array entries that go sequentially (add-on over mergeObjects)"
+    ],
+    [
+        "limitNumber", "value: number, options: { top?: number, bottom?: number }",
+        "Limit a certain number to an upper and lower bound"
+    ]
+]

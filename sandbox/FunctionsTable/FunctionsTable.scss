@@ -1,0 +1,45 @@
+div.table-wrapper {
+    position: relative;
+    display: block;
+
+    overflow: hidden;
+    overflow-x: auto;
+
+    width: 100%;
+    max-width: 720px;
+    margin-top: 10px;
+
+    table {
+        min-width: 640px;
+        border-spacing: 0;
+        border-collapse: collapse;
+
+        &, tr, td, th {
+            border: 1px solid rgba(#000, .1);
+        }
+
+        td, th {
+            padding: 10px;
+        }
+
+        th {
+            background: rgba(#000, .05);
+        }
+
+        tr td:not(:nth-child(3)) {
+            font-family: "Ubuntu Mono", monospace;
+
+            &:first-child {
+                font-weight: 700;
+                color: #555;
+                background: rgba(#000, .01);
+            }
+        }
+
+        tr:not(:first-child):hover {
+            cursor: pointer;
+            transition: 100ms ease all;
+            background: rgba(blue, .05);
+        }
+    }
+}

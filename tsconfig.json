@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "DOM",
+            "ES2020",
+            "ES2021"
+        ],
+
+        "outDir": "./dist",
+        "removeComments": true,
+        "target": "ES5",
+        "module": "CommonJS",
+
+        "baseUrl": "./",
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "paths": { },
+
+        "sourceMap": true,
+        "sourceRoot": "/",
+
+        "alwaysStrict": true,
+        "allowUnreachableCode": false,
+        "noImplicitAny": true,
+        "strict": true,
+
+        "downlevelIteration": true,
+
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUncheckedIndexedAccess": true,
+        "jsx": "react"
+    },
+
+    "include": [
+        "./sandbox/**/*"
+    ],
+
+    "exclude": [
+        "./node_modules/**/*",
+        "./package/**/*",
+        "*.config.*s",
+        "*.package.*s"
+    ]
+}

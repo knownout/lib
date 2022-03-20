@@ -1,0 +1,7 @@
+<component name="CopyrightManager">
+  <settings>
+    <module2copyright>
+      <element module="Package" copyright="Copyright_Notice" />
+    </module2copyright>
+  </settings>
+</component>
