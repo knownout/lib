@@ -11,25 +11,25 @@ describe("MakeElement class tests", () => {
     const element = new MakeElement("div");
 
     it("Attribute method test", () => {
-        element.attribute("attr", "value-1");
+        element.attr("attr", "value-1");
 
         expect(element.native.getAttribute("attr")).toEqual("value-1");
-        expect(element.attribute("attr")).toEqual("value-1");
+        expect(element.attr("attr")).toEqual("value-1");
     });
 
     it("Setters test", () => {
-        element.set.text("Hello world!");
+        element.setInnerText("Hello world!");
         expect(element.native.innerText).toEqual("Hello world!");
 
-        element.set.html("<b>Hello world!</b>");
+        element.setInnerHTML("<b>Hello world!</b>");
         expect(element.native.innerHTML).toEqual("<b>Hello world!</b>");
 
-        element.set.textContent("Hello world!");
+        element.setInnerText("Hello world!");
         expect(element.native.textContent).toEqual("Hello world!");
     });
 
     it("Special attributes test", () => {
-        element.set.html("<b>Hello world!</b>");
+        element.setInnerHTML("<b>Hello world!</b>");
 
         expect(element.html).toEqual("<b>Hello world!</b>");
         expect(element.text).toEqual("Hello world!");
@@ -46,10 +46,10 @@ describe("MakeElement class tests", () => {
     });
 
     it("Removing functions test", () => {
-        element.remove.attribute("attr");
+        element.remove("attr");
 
-        expect(element.attribute("attr")).toEqual(String());
-        element.remove.element();
+        expect(element.attr("attr")).toEqual(String());
+        element.remove(element.native);
 
         expect(element.native).not.toBeUndefined();
     });

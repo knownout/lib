@@ -12,6 +12,8 @@ describe("StringExtractor class tests", () => {
         const { extracted, entry } = extractor.attach(/#[a-z]+/g).extract;
 
         expect(Object.keys(extracted)).toContain("#");
+
+        // @ts-ignore
         expect(extracted["#"][0]).toEqual("weird");
         expect(entry).toEqual("Hello world!");
     });
@@ -20,14 +22,18 @@ describe("StringExtractor class tests", () => {
         const extractor = new StringExtractor("Hello #weird +very +world!");
         extractor.attach(/#[a-z]+/g).extract;
 
+        // @ts-ignore
         expect(Object.assign({}, extractor.extracted)["#"][0]).toEqual("weird");
         expect(extractor.entry).toEqual("Hello +very +world!");
 
         extractor.attach(/\+[a-z]+/g).extract;
 
+        // @ts-ignore
         expect(extractor.extracted["+"][0]).toEqual("very");
+        // @ts-ignore
         expect(extractor.extracted["+"][1]).toEqual("world");
 
+        // @ts-ignore
         expect(extractor.extracted["#"][0]).toEqual("weird");
         expect(extractor.entry).toEqual("Hello !");
     });

@@ -61,66 +61,42 @@ export default class MakeElement<K extends keyof HTMLElementTagNameMap>
     public set textContent (value: string) { this.native.textContent = value; }
 
     /**
-     * Access to element setter functions.
-     * @return {
-     *  {
-     *      html: (value: string) => MakeElement,
-     *      textContent: (value: string) => MakeElement,
-     *      text: (value: string) => MakeElement}
-     *  } element setters.
+     * Update element innerText attribute.
+     * @param {string} value innerText attribute value.
+     * @return {MakeElement}
      */
-    public get set () {
-        const self = this;
-        const fn = (cb: Function) => {
-            cb();
-            return self;
-        };
-
-        return {
-            /**
-             * Set element innerText attribute value
-             * @param {string} value new innerText value
-             */
-            text: (value: string) => fn(() => self.native.innerText = value),
-
-            /**
-             * Set element innerHTML attribute value
-             * @param {string} value new innerHTML value
-             */
-            html: (value: string) => fn(() => self.native.innerHTML = value),
-
-            /**
-             * Set element textContent attribute value
-             * @param {string} value new innerHTML value
-             */
-            textContent: (value: string) => fn(() => self.native.textContent = value)
-        };
+    public setInnerText (value: string): this {
+        this.native.innerText = value;
+        return this;
     }
 
     /**
-     * Access to removing functions.
-     * @return {{attribute: (key: string) => MakeElement, element: () => void}} removing functions.
+     * Update element innerHTML attribute.
+     * @param {string} value innerHTML attribute value.
+     * @return {MakeElement}
      */
-    public get remove () {
-        const self = this;
-        const fn = (cb: Function) => {
-            cb();
-            return self;
-        };
+    public setInnerHTML (value: string): this {
+        this.native.innerHTML = value;
+        return this;
+    }
 
-        return {
-            /**
-             * Remove element attribute by its name.
-             * @param {string} key attribute name.
-             * @return {MakeElement}
-             */
-            attribute: (key: string) => fn(() => self.native.removeAttribute(key)),
+    /**
+     * Update element textContent attribute.
+     * @param {string} value textContent attribute value.
+     * @return {MakeElement}
+     */
+    public setTextContent (value: string): this {
+        this.native.textContent = value;
+        return this;
+    }
 
-            /**
-             * Delete the element itself
-             */
-            element: () => self.native.remove()
-        };
+    /**
+     * Remove native element attribute or element itself.
+     * @param {Element | string} object attribute name or element.
+     */
+    public remove (object: Element | string): void {
+        if (typeof object === "string") this.native.removeAttribute(object);
+        else object.remove();
     }
 
     /**
@@ -128,7 +104,7 @@ export default class MakeElement<K extends keyof HTMLElementTagNameMap>
      * @param {string} key attribute name.
      * @return {string} attribute value.
      */
-    public attribute (key: string): string
+    public attr (key: string): string
 
     /**
      * Set element attribute value by attribute name.
@@ -136,9 +112,9 @@ export default class MakeElement<K extends keyof HTMLElementTagNameMap>
      * @param {string} value new attribute value.
      * @return {MakeElement}
      */
-    public attribute (key: string, value: string): MakeElement<K>;
+    public attr (key: string, value: string): MakeElement<K>;
 
-    public attribute (key: string, value?: string): MakeElement<K> | string {
+    public attr (key: string, value?: string): MakeElement<K> | string {
         if (value) this.native.setAttribute(key, value);
         else return this.native.getAttribute(key) || String();
 
