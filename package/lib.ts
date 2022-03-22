@@ -16,12 +16,16 @@ import classNames from "./bin/functions/classNames";
 import limitNumber from "./bin/functions/limitNumber";
 import mergeObjects from "./bin/functions/mergeObjects";
 import mergeStringArray from "./bin/functions/mergeStringArray";
+import cleanString from "./bin/functions/cleanString";
+import compareStrings from "./bin/functions/compareStrings";
 
 export {
     classNames,
     mergeObjects,
     mergeStringArray,
     limitNumber,
+    cleanString,
+    compareStrings,
 
     DateConverter,
     StringExtractor,
