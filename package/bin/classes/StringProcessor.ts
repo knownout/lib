@@ -6,6 +6,8 @@
 
 import mergeStringArray from "../functions/mergeStringArray";
 import StringExtractor from "./StringExtractor";
+import cleanString from "../functions/cleanString";
+import compareStrings from "../functions/compareStrings";
 
 /**
  * Utility class for modifying strings with special properties.
@@ -59,6 +61,28 @@ export default class StringProcessor
             else return word;
         }).join(" ");
 
+        return this;
+    }
+
+    /**
+     * Compare current entry with specific string using compareStrings
+     * function of current package.
+     * @param {string} value string to compare with.
+     * @param {boolean} hard comparison type.
+     * @param {RegExp} regexp regular expression to clean up strings.
+     * @return {boolean} comparison result.
+     */
+    public compare (value: string, hard: boolean = false, regexp?: RegExp): boolean {
+        return compareStrings(this.entry, value, hard, regexp);
+    }
+
+    /**
+     * Clean entry string using cleanString
+     * function of current package.
+     * @return {StringProcessor} StringProcessor instance.
+     */
+    public get clean (): StringProcessor {
+        this.entry = cleanString(this.entry);
         return this;
     }
 

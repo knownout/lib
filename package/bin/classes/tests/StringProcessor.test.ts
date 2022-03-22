@@ -36,6 +36,16 @@ describe("StringProcessor class tests", () => {
         const processor = new StringProcessor("Hello +world");
         processor.extractor.attach(/\+[a-z]+/g);
 
+        // @ts-ignore
         expect(processor.extractor.extract.extracted["+"][0]).toEqual("world");
+    });
+
+    it("Integration with external package functions test", () => {
+        const processor = new StringProcessor("Hello  world");
+
+        expect(processor.compare("hello world")).toBeTruthy();
+        expect(processor.compare("not he he", true)).toBeFalsy();
+
+        expect(processor.clean.entry).toEqual("Hello world");
     });
 });
