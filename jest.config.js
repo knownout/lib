@@ -5,7 +5,7 @@ module.exports = {
     testEnvironment: "jsdom",
 
     testMatch: [
-        "**/?(*.)(spec|test).ts?(x)"
+        "**/package/**/?(*.)(spec|test).ts?(x)"
     ],
 
     globals: {

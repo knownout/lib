@@ -18,6 +18,7 @@ import mergeObjects from "./bin/functions/mergeObjects";
 import mergeStringArray from "./bin/functions/mergeStringArray";
 import cleanString from "./bin/functions/cleanString";
 import compareStrings from "./bin/functions/compareStrings";
+import computeProgress from "./bin/functions/computeProgress";
 
 export {
     classNames,
@@ -26,6 +27,7 @@ export {
     limitNumber,
     cleanString,
     compareStrings,
+    computeProgress,
 
     DateConverter,
     StringExtractor,
