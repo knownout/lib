@@ -7,6 +7,8 @@
 import compareStrings from "../compareStrings";
 
 it("compareStrings function test", () => {
-    expect(compareStrings("Hello", "hello")).toBeTruthy();
-    expect(compareStrings("Hello, world", "hello world", true)).toBeTruthy();
+    expect(compareStrings("Hello", "hello").result).toBeTruthy();
+    expect(compareStrings("Hello, world", "hello world").result).toBeTruthy();
+    expect(compareStrings("Hello", "henlow").result).toBeTruthy();
+    expect(compareStrings("Hello", "Not he he").result).toBeFalsy();
 });

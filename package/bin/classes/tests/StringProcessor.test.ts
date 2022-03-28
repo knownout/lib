@@ -43,8 +43,8 @@ describe("StringProcessor class tests", () => {
     it("Integration with external package functions test", () => {
         const processor = new StringProcessor("Hello  world");
 
-        expect(processor.compare("hello world")).toBeTruthy();
-        expect(processor.compare("not he he", true)).toBeFalsy();
+        expect(processor.compare("henlo world").result).toBeTruthy();
+        expect(processor.compare("not he he").result).toBeFalsy();
 
         expect(processor.clean.entry).toEqual("Hello world");
     });

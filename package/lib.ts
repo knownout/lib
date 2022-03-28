@@ -19,6 +19,8 @@ import mergeStringArray from "./bin/functions/mergeStringArray";
 import cleanString from "./bin/functions/cleanString";
 import compareStrings from "./bin/functions/compareStrings";
 import computeProgress from "./bin/functions/computeProgress";
+import computeArrayWeights from "./bin/functions/computeArrayWeights";
+import sortByWeights from "./bin/functions/sortByWeights";
 
 export {
     classNames,
@@ -28,6 +30,8 @@ export {
     cleanString,
     compareStrings,
     computeProgress,
+    computeArrayWeights,
+    sortByWeights,
 
     DateConverter,
     StringExtractor,

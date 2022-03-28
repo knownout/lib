@@ -67,13 +67,12 @@ export default class StringProcessor
     /**
      * Compare current entry with specific string using compareStrings
      * function of current package.
+     *
      * @param {string} value string to compare with.
-     * @param {boolean} hard comparison type.
-     * @param {RegExp} regexp regular expression to clean up strings.
-     * @return {boolean} comparison result.
+     * @return {{result: boolean, weight: number}} comparison result and weight.
      */
-    public compare (value: string, hard: boolean = false, regexp?: RegExp): boolean {
-        return compareStrings(this.entry, value, hard, regexp);
+    public compare (value: string): { result: boolean, weight: number } {
+        return compareStrings(this.entry, value);
     }
 
     /**

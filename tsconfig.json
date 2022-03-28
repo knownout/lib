@@ -5,21 +5,18 @@
             "ES2020",
             "ES2021"
         ],
-
         "outDir": "./dist",
         "removeComments": true,
         "target": "ES5",
         "module": "CommonJS",
-
         "baseUrl": "./",
         "esModuleInterop": true,
         "moduleResolution": "Node",
         "resolveJsonModule": true,
-        "paths": { },
-
+        "strictNullChecks": false,
+        "paths": {},
         "sourceMap": true,
         "sourceRoot": "/",
-
         "alwaysStrict": true,
         "allowUnreachableCode": false,
         "noImplicitAny": true,

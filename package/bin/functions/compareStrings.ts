@@ -5,6 +5,7 @@
  */
 
 import cleanString from "./cleanString";
+import computeProgress from "./computeProgress";
 
 /**
  * Utility function for hard or soft
@@ -12,15 +13,28 @@ import cleanString from "./cleanString";
  *
  * @param {string} a first string.
  * @param {string} b second string.
- * @param {boolean} hard comparison type.
- * @param {RegExp} cleanRegex regular expression to clean up strings.
- * @return {boolean} comparison result.
+ * @return {{result: boolean, weight: number}} comparison result and weight.
  */
-function compareStrings (a: string, b: string, hard = false, cleanRegex = /[^A-zА-яЁё0-9]/g): boolean {
-    const _a = cleanString(a).toLocaleLowerCase(), _b = cleanString(b).toLocaleLowerCase();
+function compareStrings (a: string, b: string): { result: boolean, weight: number } {
+    let _a = cleanString(a).toLocaleLowerCase().replace(/[^A-z0-9 ]/g, ""),
+        _b = cleanString(b).toLocaleLowerCase().replace(/[^A-z0-9 ]/g, "");
 
-    if (!hard) return _a == _b;
-    return cleanString(_a, cleanRegex) == cleanString(_b, cleanRegex);
+    const minLength = Math.min(_a.length, _b.length);
+    const charCodes: [ number[], number[] ] = [
+        _a.slice(0, minLength).split("").map(e => e.charCodeAt(0)),
+        _b.slice(0, minLength).split("").map(e => e.charCodeAt(0))
+    ];
+
+    let difference = charCodes.reduce((a, b) =>
+        a.map((e, i) => Math.abs(e - (b as any)[i])));
+
+    const weight = computeProgress(difference.reduce((a, b) => a + b) / difference.length,
+        charCodes.map(e => e.reduce((a, b) => a + b)).reduce((a, b) => a + b));
+
+    return {
+        result: weight < 0.155,
+        weight
+    };
 }
 
 export default compareStrings;
