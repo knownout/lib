@@ -54,13 +54,16 @@ function mergeObjects (objects: TObject[], mergeKey: [ string, any ], minMergeLi
     sequencesList.forEach((sequence, index) => {
         // Move sequence indexes back about iteration number
         const sequenceData = sequence.map(e => e - index) as [ number, number ];
+
         const extracted = objectsList.splice(sequenceData[0], sequenceData[1] - sequenceData[0]);
 
         objectsList = [
-            ...(sequenceStartIndex > 0 ? objectsList.slice(0, sequenceData[0]) : []),
+            ...objectsList.slice(0, sequenceData[0]),
             extracted,
             ...objectsList.slice(sequenceData[0], objectsList.length)
         ];
+
+        // console.log(sequenceStartIndex);
     });
 
     return objectsList;
