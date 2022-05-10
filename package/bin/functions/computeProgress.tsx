@@ -18,12 +18,12 @@
  * @param {number} min minimum for current value (default - 0)
  * @return {number} computed progress
  */
-function computeProgress (value: number, max = 100, min = 0) {
+function computeProgress (value: number, max = 100, min = 0): number {
     // A - current value
     // B - maximum (for current value)
     // C - minimum (for current value)
-    // X = ((A - C) * 100) / (B - C)
-    return ((value - min) * 100) / (max - min);
+    // X = (A * 100) / (B - C)
+    return (value * 100) / (max - min);
 }
 
 export default computeProgress;

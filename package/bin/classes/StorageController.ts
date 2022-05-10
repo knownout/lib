@@ -8,7 +8,7 @@
  * An add-on over the native browser storage. Provides simplified
  * interaction interface (slower than native due to JSON transformations).
  */
-export default class CacheController
+export default class StorageController
 {
     /**
      * An add-on over the native browser storage. Provides simplified
@@ -36,7 +36,7 @@ export default class CacheController
      *
      * @param key storage key (cacheKeysList).
      * @param value storage value.
-     * @return {this} CacheController instance.
+     * @return {this} StorageController instance.
      */
     public setItem<T = any> (key: string, value: T): this {
         this.storage.setItem(key, JSON.stringify(value));
@@ -46,7 +46,7 @@ export default class CacheController
     /**
      * Remove item from defined browser storage.
      * @param key storage key.
-     * @return {this} CacheController instance.
+     * @return {this} StorageController instance.
      */
     public removeItem (key: string): this {
         this.storage.removeItem(key);

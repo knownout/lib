@@ -13,7 +13,8 @@ const packageConfig = Object.assign(defaultConfig, {
     },
 
     entry: {
-        lib: path.resolve(__dirname, "package", "lib")
+        lib: path.resolve(__dirname, "package", "lib"),
+        "bin/classes/DateConverter": path.resolve(__dirname, "package", "bin", "classes", "DateConverter")
     },
 
     plugins: []

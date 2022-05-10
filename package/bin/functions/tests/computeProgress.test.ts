@@ -7,5 +7,6 @@
 import computeProgress from "../computeProgress";
 
 it("computeProgress function test", () => {
-   expect(computeProgress(1000, 1500, 500)).toEqual(50);
+   expect(computeProgress(10, 200, 100)).toEqual(10);
+   expect(computeProgress(10, 200, 0)).toEqual(5);
 });

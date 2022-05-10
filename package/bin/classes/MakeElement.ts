@@ -7,6 +7,8 @@
 /**
  * Utility class for easily creating and
  * manipulating HTML elements.
+ *
+ * @deprecated
  */
 export default class MakeElement<K extends keyof HTMLElementTagNameMap>
 {

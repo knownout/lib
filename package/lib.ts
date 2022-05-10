@@ -4,7 +4,7 @@
  * https://github.com/re-knownout/lib
  */
 
-import CacheController from "./bin/classes/CacheController";
+import StorageController from "./bin/classes/StorageController";
 import DateConverter from "./bin/classes/DateConverter";
 import MakeElement from "./bin/classes/MakeElement";
 import MakeFormData from "./bin/classes/MakeFormData";
@@ -21,6 +21,7 @@ import compareStrings from "./bin/functions/compareStrings";
 import computeProgress from "./bin/functions/computeProgress";
 import computeArrayWeights from "./bin/functions/computeArrayWeights";
 import sortByWeights from "./bin/functions/sortByWeights";
+import rotateArray from "./bin/functions/rotateArray";
 
 export {
     classNames,
@@ -32,11 +33,12 @@ export {
     computeProgress,
     computeArrayWeights,
     sortByWeights,
+    rotateArray,
 
     DateConverter,
     StringExtractor,
     StringProcessor,
-    CacheController,
+    StorageController,
     MakeFormData,
     Random,
     MakeElement

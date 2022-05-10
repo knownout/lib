@@ -16,9 +16,10 @@ export type TObject = { [key: string | number | symbol]: any };
  * @param {number} minMergeLimit minimum objects in sequence to be merged.
  * @return {TObject[]} generated object with merged entities.
  */
-function mergeObjects (objects: TObject[], mergeKey: [ string, any ], minMergeLimit: number = 2): TObject[] {
+function mergeObjects (objects: TObject[], mergeKey: { [key: string]: string }, minMergeLimit: number = 2): TObject[] {
     // Copy objects list to local variable
     let objectsList = [ ...objects ];
+    const currentMergeKey = Object.entries(mergeKey)[0];
 
     // Sequence indexes container
     const sequencesList: [ number, number ][] = [];
@@ -26,11 +27,11 @@ function mergeObjects (objects: TObject[], mergeKey: [ string, any ], minMergeLi
 
     objectsList.forEach((object, index) => {
         // Get key value from object if exist
-        const keyValue = object.hasOwnProperty(mergeKey[0]) ? object[mergeKey[0]] : null;
+        const keyValue = object.hasOwnProperty(currentMergeKey[0]) ? object[currentMergeKey[0]] : null;
         if (!keyValue) return;
 
         // If key-value pair matches...
-        if (keyValue == mergeKey[1]) {
+        if (keyValue == currentMergeKey[1]) {
             // ... update sequence start index if not updated yet.
             if (sequenceStartIndex < 0) sequenceStartIndex = index;
         } else {

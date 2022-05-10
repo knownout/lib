@@ -12,7 +12,7 @@ import compareStrings from "./compareStrings";
  * @param {string[]} array values list.
  * @return {number[]} weights list.
  */
-function computeArrayWeights (query: string, array: string[]) {
+function computeArrayWeights (query: string, array: string[]): number[] {
     return Array(array.length).fill(0)
         .map((item, index) => compareStrings(array[index], query).weight);
 }

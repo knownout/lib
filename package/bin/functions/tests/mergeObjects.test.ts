@@ -70,14 +70,14 @@ const testObjectTransform = [
 
 describe("mergeObject function test", () => {
     it("Mixed object triple merging test", () =>
-        expect(mergeObjects(testObjects[0], [ "type", "cat" ])).toEqual(testObjectTransform[0])
+        expect(mergeObjects(testObjects[0], { type: "cat" })).toEqual(testObjectTransform[0])
     );
 
     it("Mixed object without merging test", () =>
-        expect(mergeObjects(testObjects[1], [ "type", "cat" ])).toEqual(testObjectTransform[1])
+        expect(mergeObjects(testObjects[1], { type: "cat" })).toEqual(testObjectTransform[1])
     );
 
     it("Object with identical elements test", () =>
-        expect(mergeObjects(testObjects[2], [ "type", "cat" ])).toEqual(testObjectTransform[2])
+        expect(mergeObjects(testObjects[2], { type: "cat" })).toEqual(testObjectTransform[2])
     );
 });

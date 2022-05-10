@@ -4,13 +4,13 @@
  * https://github.com/re-knownout/lib
  */
 
-import CacheController from "../CacheController";
+import StorageController from "../StorageController";
 
-describe("CacheController class tests", () => {
+describe("StorageController class tests", () => {
     const key = "testNode",
         value = { value: "Hello world!" };
 
-    const controller = new CacheController(localStorage);
+    const controller = new StorageController(localStorage);
 
     it("Storage read/write test", () => {
         controller.setItem(key, value);

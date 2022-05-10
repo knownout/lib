@@ -5,7 +5,7 @@
  */
 
 /**
- * Utility function to convert date, javascript or unix
+ * Utility class to convert date, javascript or unix
  * timestamps to specific forms.
  */
 export default class DateConverter
@@ -63,8 +63,10 @@ export default class DateConverter
         let monthName = mappings.months[this.entry.getMonth()] as string;
 
         // Changing the ending to case specific
-        if (mappings.casing) Object.entries(mappings.casing).forEach(([ literal, replacer ]) =>
-            monthName = monthName.replace(new RegExp(literal, "g"), replacer));
+        if (mappings.casing) Object.entries(mappings.casing).forEach(([ literal, replacer ]) => {
+            const canProcess = monthName.slice(-literal.length) == literal;
+            if (canProcess) monthName = monthName.slice(0, -literal.length) + replacer;
+        });
 
         // Shortcut for adding leading zeros
         const padStart = (value: number) => String(value).padStart(2, "0");

@@ -25,7 +25,7 @@ export default function mergeStringArray (array: string[], minMergeLimit: number
 
     // Merging each unique sequence of entities (this can be slow).
     Array.from(new Set(array)).forEach(entry =>
-        generated = mergeObjects(generated, [ "value", entry ], minMergeLimit));
+        generated = mergeObjects(generated, { value: entry }, minMergeLimit));
 
     return generated.map(item => Array.isArray(item)
         ? item.map(e => e.value) : item.value) as string[];
