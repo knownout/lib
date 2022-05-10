@@ -7,8 +7,11 @@
 import limitNumber from "../limitNumber";
 
 it("limitNumber function test", () => {
-    expect(limitNumber(-12, { bottom: 0, top: 1 })).toEqual(0);
-    expect(limitNumber(12, { bottom: 2, top: 10 })).toEqual(10);
+    expect(limitNumber(-12, 1, 0)).toEqual(0);
+    expect(limitNumber(12, 10, 2)).toEqual(10);
 
-    expect(limitNumber(10, { bottom: 2, top: 1 })).toEqual(1);
+    expect(limitNumber(10, 1, 2)).toEqual(1);
+
+    expect(limitNumber(-3, null, -2)).toEqual(-2);
+    expect(limitNumber(12, null, -2)).toEqual(12);
 });

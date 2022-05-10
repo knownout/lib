@@ -7,21 +7,22 @@
 /**
  * Utility function to limit a certain number to an upper and lower bound.
  * @param {number} value certain number.
- * @param {{top?: number, bottom?: number}} options set lower or upper bound.
+ * @param top upper bound.
+ * @param bottom lower bound.
  * @return {number} generated number.
  */
-function limitNumber (value: number, options: { top?: number, bottom?: number }): number {
+function limitNumber (value: number, top?: number | null, bottom?: number | null): number {
+    const isNumber = (value: any) => Number.isInteger(value) || Number.isFinite(value);
+
     // Show warning if upper and lower bounds are the same
-    if (options.top === options.bottom) console.warn("It makes no sense to "
+    if (isNumber(top) && top === bottom) console.warn("It makes no sense to "
         + "set the value of the lower and upper limits, in this case the function will not "
         + "work correctly");
 
     let result = value;
 
-    // @ts-ignore
-    if (Number.isInteger(options.bottom) && result < options.bottom) result = options.bottom;
-    // @ts-ignore
-    if (Number.isInteger(options.top) && result > options.top) result = options.top;
+    if (isNumber(bottom) && result < bottom) result = bottom;
+    if (isNumber(top) && result > top) result = top;
 
     return result;
 }
