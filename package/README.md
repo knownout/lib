@@ -1,7 +1,7 @@
 # 🧱 Utility functions library
 
-_Select documentation language:_ **English** (selected)
-, [Русский](https://github.com/re-knownout/lib/tree/master/package/README.ru-RU.md)
+_Select documentation language:_ **English** (selected),
+[Русский](https://github.com/re-knownout/lib/tree/master/package/README.ru-RU.md)
 
 This is a service project for providing common functionality as a npm package. Below is a list of available features
 with a short description, documentation and usage.
@@ -63,20 +63,20 @@ mergeObjects([ { key: "A", text: "Hello" }, { key: "A", text: "World" }, { key: 
 ```json5
 // Execution result
 [
-   [
-      {
-         "key": "A",
-         "text": "Hello"
-      },
-      {
-         "key": "A",
-         "text": "World"
-      }
-   ],
-   {
-      "key": "B",
-      "text": "Not"
-   }
+    [
+        {
+            "key": "A",
+            "text": "Hello"
+        },
+        {
+            "key": "A",
+            "text": "World"
+        }
+    ],
+    {
+        "key": "B",
+        "text": "Not"
+    }
 ]
 ```
 
@@ -119,10 +119,10 @@ computeArrayWeights("Hello", [ "henlo", "hellow", "okay", "goodbye" ])
 ```json5
 // Execution result
 [
-   0.0375234521575985,
-   0,
-   1.0793465577596266,
-   0.6635071090047393
+    0.0375234521575985,
+    0,
+    1.0793465577596266,
+    0.6635071090047393
 ]
 ```
 
@@ -218,14 +218,14 @@ Utility class to convert date, javascript or unix timestamps to specific forms.
 
 ```json5
 {
-   casing: {
-      "regularEnding": "caseEnding"
-   },
-   months: [
-      "firstMonthName",
-      "secondMonthName",
-      "..."
-   ]
+    casing: {
+        "regularEnding": "caseEnding"
+    },
+    months: [
+        "firstMonthName",
+        "secondMonthName",
+        "..."
+    ]
 }
 ```
 
@@ -417,7 +417,7 @@ AC,ac → [A, B, C, a, b, c]
 ```ts
 Random.string(10, "AZ,09") // => 'RLDL0QQLWV'
 
-Random.arrayElement([1, 2, 3, 4, 5]) // => 4
+Random.arrayElement([ 1, 2, 3, 4, 5 ]) // => 4
 
 Random.number(100, 212) // => 107
 
@@ -429,7 +429,7 @@ Random.number(100.3, 212.5) // => 153.52220396806507
 ```ts
 const random = new Random();
 
-random.uniqueValues(5, () => Random.string(3)) 
+random.uniqueValues(5, () => Random.string(3))
 // => Set(5) { 'YRd', 'GI3', 'ig2', 'D8o', 'Ro0' }
 
 // Other instance methods are just wrappers around 
