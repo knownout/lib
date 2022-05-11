@@ -17,7 +17,7 @@ describe("Random class tests", () => {
         const number = Random.number(8, 10);
 
         expect(number).toBeGreaterThanOrEqual(8);
-        expect(number).toBeLessThan(10);
+        expect(number).toBeLessThanOrEqual(10);
     }));
 
     it("Array element picker test", () => {

@@ -1,9 +1,12 @@
 # 🧱 Utility functions library
 
-This is a service project for providing common functionality as a npm package. Below is a list of available features
-with a short description.
+_Select documentation language:_ **English** (selected)
+, [Русский](https://github.com/re-knownout/lib/tree/master/package/README.ru-RU.md)
 
-## [Functions](#functions-usage)
+This is a service project for providing common functionality as a npm package. Below is a list of available features
+with a short description, documentation and usage.
+
+## [Functions](#functions-documentation)
 
 |   # | Name                                                 | Description                                                              |
 |----:|:-----------------------------------------------------|:-------------------------------------------------------------------------|
@@ -18,7 +21,7 @@ with a short description.
 |   9 | [cleanString](#cleanstring-function)                 | Clean string with or without regular expression                          |
 |  10 | [rotateArray](#rotatearray-function)                 | Rotate an array to specified direction by one or more steps              |
 
-## [Classes](#classes-usage)
+## [Classes](#classes-documentation)
 
 |   # | Name                                                      | Description                                            |
 |----:|:----------------------------------------------------------|:-------------------------------------------------------|
@@ -30,7 +33,7 @@ with a short description.
 |   6 | [Random](#random-class)                                   | Several random value generators                        |
 |   7 | [MakeElement (deprecated)](#makeelement-class-deprecated) | Plain html elements constructor                        |
 
-# Functions usage
+# Functions documentation
 
 ### classNames function
 
@@ -94,7 +97,7 @@ Works the same as mergeObjects, but for string arrays.
 Limit a certain number to an upper and lower bound, pass null to remove specific bound and use next one.
 
 ```ts
-limitNumber(10, 5, 0) // => 5sortByWeights("Hello", ["ok", "good", "henlow", "henlo"])
+limitNumber(10, 5, 0) // => 5
 
 limitNumber(15, null, 10) // => 15
 
@@ -197,7 +200,7 @@ rotateArray([ 1, 2, 3, 4, 5 ], false) // => [2, 3, 4, 5, 1]
 
 <br>
 
-# Classes usage
+# Classes documentation
 
 ## DateConverter class
 
@@ -275,13 +278,13 @@ Utility class for modifying strings with special properties.
 
 1. `get extractor () => StringExtractor` - get StringExtractor class instance.
 2. `get wordsList () => string[]` - generate words array from current entry.
-3. `get removeDuplicates () => this` - Remove duplicate words from entry using `mergeStringArray` utility function.
+3. `get removeDuplicates () => this` - remove duplicate words from entry using `mergeStringArray` utility function.
 
 _`removeDuplicate` method return StringProcessor class instance, removing result writing directly into entry._
 
-4. `compare (value: string) => { result: boolean, weight: number }` - Compare current entry with specific string
+4. `compare (value: string) => { result: boolean, weight: number }` - compare current entry with specific string
    using `compareStrings` function.
-5. `get clean () => this` - clean entry string using cleanString function.
+5. `get clean () => this` - clean entry string using `cleanString` function.
 6. `limitWordsCount (limit: number, ellipsis: boolean = true, numbers = true) => this` - limit words count in current
    entry _(act like `removeDuplicates`, writes result directly into entry)_.
 7. `filter (...filters: (RegExp | string)[]) => this` - apply regular expressions or strings as filters
@@ -368,7 +371,71 @@ formData.fetchObject // => { method: "POST", body: FormData }
 
 Utility class for generating various types of random values.
 
-// TODO: add Random class documentation
+### Methods list
+
+1. `static string (length: number, pattern: string = "AZ,az,09") => string` - fixed length random string generator.
+
+_`string` method gets the range of values from the pattern by converting characters into char code, because of this,
+they only work as you would expect if there are patterns that have sequentially character codes: `AZ, az, 09, etc`._
+
+2. `static arrayElement<T = unknown> (array: T[]) => T` - random array element picker.
+3. `static number (min: number, max: number) => number` - random number generator with upper and lower bounds.
+4. `uniqueValues<T = any> (count: number, generator: Function) => Set<T>` - generate unique random values for each
+   instance of the class (so far in one instance unique values will be generated each time)
+
+_`uniqueValues` method stores generated values inside an instance variable (RAM), so if you create a different instance,
+generated values may be repeated._
+
+The `uniqueValues` method will throw an error after 10,000 generation attempts, this error means that all possible
+values have already generated.
+
+_Random class instance methods (same to static ones):_
+
+5. `string (length: number, pattern: string = "AZ,az,09") => string`
+6. `arrayElement<T = unknown> (array: T[]) => T `
+7. `number (min: number, max: number) => number`
+
+### About patterns
+
+The pattern must pass as a string containing values
+(not longer than two characters) separated by a comma. Each value will either convert to an array of characters
+(if the length equal 2) or simply passed to the generated array
+(if the length equal 1).
+
+Pattern conversion examples:
+
+```text
+AD → [A, B, C, D]
+
+AC,ac → [A, B, C, a, b, c]
+
+02,AB,@,# → [0, 1, 2, A, B, @, #]
+```
+
+### Static methods usage
+
+```ts
+Random.string(10, "AZ,09") // => 'RLDL0QQLWV'
+
+Random.arrayElement([1, 2, 3, 4, 5]) // => 4
+
+Random.number(100, 212) // => 107
+
+Random.number(100.3, 212.5) // => 153.52220396806507
+```
+
+### Instance methods usage
+
+```ts
+const random = new Random();
+
+random.uniqueValues(5, () => Random.string(3)) 
+// => Set(5) { 'YRd', 'GI3', 'ig2', 'D8o', 'Ro0' }
+
+// Other instance methods are just wrappers around 
+// static methods.
+
+```
 
 # MakeElement class (deprecated)
 

@@ -57,7 +57,7 @@ export default class Random
      * @param {any[]} array source array.
      * @returns {any} random element.
      */
-    public static arrayElement (array: any[]): any {
+    public static arrayElement<T = unknown> (array: T[]): T {
         return array[Math.floor(Math.random() * array.length)];
     }
 
@@ -68,7 +68,11 @@ export default class Random
      * @returns {number} generated number.
      */
     public static number (min: number, max: number): number {
-        return Math.random() * (max - min) + min;
+        const out = Math.random() * (max - min) + min;
+        if (Number.isInteger(min) && Number.isInteger(max))
+            return Math.round(out);
+
+        return out;
     }
 
     /**
@@ -176,7 +180,7 @@ export default class Random
      * @param {any[]} array source array.
      * @returns {any} random element.
      */
-    public arrayElement<T = any> (array: T[]): T {
+    public arrayElement<T = unknown> (array: T[]): T {
         return Random.arrayElement(array);
     }
 
