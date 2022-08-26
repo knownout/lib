@@ -92,7 +92,7 @@ Works the same as mergeObjects, but for string arrays.
 
 ### limitNumber function
 
-- Signature: `(value: number, top?: number | null, bottom?: number | null) => number`
+- Signature: `(value: number, top?: number | TLimitNumberOptions | null, bottom?: number | null) => number`
 
 Limit a certain number to an upper and lower bound, pass null to remove specific bound and use next one.
 
@@ -101,7 +101,16 @@ limitNumber(10, 5, 0) // => 5
 
 limitNumber(15, null, 10) // => 15
 
+limitNumber(15, {
+    bottom: 10
+}) // => 15
+
 limitNumber(-10, 5, 0) // => 0
+
+limitNumber(-10, { 
+    top: 5,
+    bottom: 0
+}) // => 0
 ```
 
 <br>

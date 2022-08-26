@@ -93,7 +93,7 @@ mergeObjects([ { key: "A", text: "Hello" }, { key: "A", text: "World" }, { key: 
 
 ### limitNumber
 
-- Сигнатура: `(value: number, top?: number | null, bottom?: number | null) => number`
+- Сигнатура: `(value: number, top?: number | TLimitNumberOptions | null, bottom?: number | null) => number`
 
 Ограничивает заданное число по верхней и/или нижней границе. Значение `null` для границы полностью убирает ее и
 позволяет установить следующую.
@@ -103,7 +103,16 @@ limitNumber(10, 5, 0) // => 5
 
 limitNumber(15, null, 10) // => 15
 
+limitNumber(15, {
+   bottom: 10
+}) // => 15
+
 limitNumber(-10, 5, 0) // => 0
+
+limitNumber(-10, {
+   top: 5,
+   bottom: 0
+}) // => 0
 ```
 
 <br>
