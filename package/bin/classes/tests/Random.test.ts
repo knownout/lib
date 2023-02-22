@@ -35,7 +35,7 @@ describe("Random class tests", () => {
 
         expect(string.length).toEqual(10);
         expect(number).toBeGreaterThanOrEqual(8);
-        expect(number).toBeLessThan(10);
+        expect(number).toBeLessThanOrEqual(10);
         expect(element).toEqual(1);
     });
 

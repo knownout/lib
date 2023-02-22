@@ -16,6 +16,8 @@ import computeProgress from "./computeProgress";
  * @return {{result: boolean, weight: number}} comparison result and weight.
  */
 function compareStrings (a: string, b: string): { result: boolean, weight: number } {
+    if (!a || !b) return { result: false, weight: -1 }
+
     let _a = cleanString(a).toLocaleLowerCase().replace(/[^A-z0-9 ]/g, ""),
         _b = cleanString(b).toLocaleLowerCase().replace(/[^A-z0-9 ]/g, "");
 
